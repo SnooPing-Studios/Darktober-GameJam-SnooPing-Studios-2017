@@ -1,2 +1,2 @@
-# SpoopyGameJam2017
-Darktober game jame 2017
+# Darktober-GameJam-SnooPing-Studios-2017
+Spoopy!
