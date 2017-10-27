@@ -25,11 +25,49 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>global.upCtrl = vk_space;
+<<<<<<< HEAD
+            <string>/// Global Variables
+
+// Default Key Controls
+global.jumpCtrl = vk_space;
+global.upCtrl = (ord("W"));
+=======
+            <string>global.jumpCtrl = vk_space;
+>>>>>>> d56a2d123b3225b90614d6dac1014c1f231aa710
 global.leftCtrl = (ord("A"));
 global.rightCtrl = (ord("D"));
 global.downCtrl = (ord("S"));
+global.upCtrl = (ord("W"))
 global.ctrlScheme = "WASD";
+
+
+gamepad_set_axis_deadzone(0, 0.7);
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="7" enumb="2">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>enum enemy_state {
+    idle,
+    chase
+}
 </string>
           </argument>
         </arguments>
@@ -52,19 +90,38 @@ global.ctrlScheme = "WASD";
         <arguments>
           <argument>
             <kind>1</kind>
+<<<<<<< HEAD
             <string>if global.ctrlScheme == "Arrow keys" {
-    global.upCtrl = vk_space;
+    global.jumpCtrl = vk_space;
+=======
+            <string>if global.ctrlScheme == "Gamepad" {
+>>>>>>> d56a2d123b3225b90614d6dac1014c1f231aa710
+    global.upCtrl = (ord("W"));
     global.leftCtrl = (ord("A"));
     global.rightCtrl = (ord("D"));
     global.downCtrl = (ord("S"));
+    global.jumpCtrl = vk_space;
     global.ctrlScheme = "WASD";
 } else if global.ctrlScheme == "WASD" {
-    global.upCtrl = vk_space;
+<<<<<<< HEAD
+    global.jumpCtrl = vk_space;
+=======
+>>>>>>> d56a2d123b3225b90614d6dac1014c1f231aa710
+    global.upCtrl = vk_up;
     global.leftCtrl = vk_left;
     global.rightCtrl = vk_right;
     global.downCtrl = vk_down;
-    global.ctrlScheme = "Arrow keys"
+    global.jumpCtrl = vk_space;
+    global.ctrlScheme = "Arrow keys";
+} else if global.ctrlScheme == "Arrow keys" {
+    global.upCtrl = gp_axislv;
+    global.leftCtrl = gp_axislh;
+    global.rightCtrl = gp_axislh;
+    global.downCtrl = gp_axislv;
+    global.jumpCtrl = gp_face1;
+    global.ctrlScheme = "Gamepad";
 }
+
 
 </string>
           </argument>
