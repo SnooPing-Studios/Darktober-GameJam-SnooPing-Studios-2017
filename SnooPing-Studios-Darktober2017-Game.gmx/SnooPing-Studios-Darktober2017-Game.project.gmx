@@ -14,6 +14,7 @@
   <objects name="objects">
     <object>objects\obj_solid</object>
     <object>objects\obj_player</object>
+    <object>objects\obj_gameController</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\rm_test</room>
