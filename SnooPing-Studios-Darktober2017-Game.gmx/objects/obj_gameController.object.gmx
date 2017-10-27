@@ -26,11 +26,15 @@
           <argument>
             <kind>1</kind>
 <<<<<<< HEAD
+<<<<<<< HEAD
             <string>/// Global Variables
 
 // Default Key Controls
 global.jumpCtrl = vk_space;
 global.upCtrl = (ord("W"));
+=======
+            <string>global.jumpCtrl = vk_space;
+>>>>>>> d56a2d123b3225b90614d6dac1014c1f231aa710
 =======
             <string>global.jumpCtrl = vk_space;
 >>>>>>> d56a2d123b3225b90614d6dac1014c1f231aa710
@@ -42,6 +46,7 @@ global.ctrlScheme = "WASD";
 
 
 gamepad_set_axis_deadzone(0, 0.7);
+<<<<<<< HEAD
 </string>
           </argument>
         </arguments>
@@ -68,6 +73,8 @@ gamepad_set_axis_deadzone(0, 0.7);
     idle,
     chase
 }
+=======
+>>>>>>> d56a2d123b3225b90614d6dac1014c1f231aa710
 </string>
           </argument>
         </arguments>
@@ -91,8 +98,12 @@ gamepad_set_axis_deadzone(0, 0.7);
           <argument>
             <kind>1</kind>
 <<<<<<< HEAD
+<<<<<<< HEAD
             <string>if global.ctrlScheme == "Arrow keys" {
     global.jumpCtrl = vk_space;
+=======
+            <string>if global.ctrlScheme == "Gamepad" {
+>>>>>>> d56a2d123b3225b90614d6dac1014c1f231aa710
 =======
             <string>if global.ctrlScheme == "Gamepad" {
 >>>>>>> d56a2d123b3225b90614d6dac1014c1f231aa710
@@ -104,7 +115,10 @@ gamepad_set_axis_deadzone(0, 0.7);
     global.ctrlScheme = "WASD";
 } else if global.ctrlScheme == "WASD" {
 <<<<<<< HEAD
+<<<<<<< HEAD
     global.jumpCtrl = vk_space;
+=======
+>>>>>>> d56a2d123b3225b90614d6dac1014c1f231aa710
 =======
 >>>>>>> d56a2d123b3225b90614d6dac1014c1f231aa710
     global.upCtrl = vk_up;
