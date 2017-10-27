@@ -13,9 +13,9 @@
   <backgrounds name="background"/>
   <paths name="paths"/>
   <objects name="objects">
+    <object>objects\obj_gamecontroller</object>
     <object>objects\obj_solid</object>
     <object>objects\obj_player</object>
-    <object>objects\obj_gameController</object>
     <object>objects\obj_enemy</object>
     <object>objects\obj_pit</object>
     <objects name="Parents">

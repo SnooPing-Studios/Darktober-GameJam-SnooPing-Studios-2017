@@ -58,15 +58,10 @@ fric = 1;
           <argument>
             <kind>1</kind>
             <string>/// Player movement
-if global.ctrlScheme != "Gamepad" {
+
     var rkey = (keyboard_check(global.rightCtrl));
     var lkey = (keyboard_check(global.leftCtrl));
     var jkey = (keyboard_check(global.jumpCtrl));
-} else {
-    var rkey = ((gamepad_axis_value(0, global.rightCtrl)) &gt; 0);
-    var lkey = ((gamepad_axis_value(0, global.leftCtrl)) &lt; 0);
-    var jkey = (gamepad_button_check(0, global.jumpCtrl));
-}
 
 var frict = fric;
 
@@ -84,13 +79,11 @@ if (place_meeting(x,y+1,obj_solid)) {
     if (vspd &lt; 10){
         vspd += grav;
     }
-    if global.ctrlScheme != "Gamepad" {
-        if (keyboard_check_released(global.jumpCtrl) &amp;&amp; vspd &lt; -2) {
-            vspd = -2;
-        }
-    } else if (gamepad_button_check_released(0,global.jumpCtrl) &amp;&amp; vspd &lt; -2) {
-        vspd = -2;
-    }
+
+     if (keyboard_check_released(global.jumpCtrl) &amp;&amp; vspd &lt; -2) {
+     vspd = -2;
+     }
+
 }
 
 // Moving right
@@ -145,7 +138,7 @@ if (place_meeting(x,y+vspd,obj_solid)) {
 y += vspd;
 
 y = round(y);
-x = round(x)
+x = round(x);
 </string>
           </argument>
         </arguments>
