@@ -97,32 +97,49 @@ if (place_meeting(x,y+1,obj_solid)) {
     }
 }
 
-// Moving right
-if (rkey or ralt){
-    if (hspd &lt; spd) {
-        hspd += frict;
-    } else {
-        hspd = spd;
+// Make check if the player is moving
+if !(((rkey &amp;&amp; lkey) or (ralt &amp;&amp; lalt)) or ((ralt &amp;&amp; lkey) or (rkey &amp;&amp; lalt))) {
+    // Moving right
+    if (rkey || ralt){
+        if (hspd &lt; spd) {
+            hspd += frict;
+        } else {
+            hspd = spd;
+        }
     }
-}
-
-// Moving left
-if (lkey || lalt) {
-    if (hspd &gt; spd) {
-        hspd -= frict;
-    } else {
-        hspd = -spd;
+    
+    // Moving left
+    if (lkey || lalt) {
+        if (hspd &gt; spd) {
+            hspd -= frict;
+        } else {
+            hspd = -spd;
+        }
     }
 }
 
 // Check if the player is not moving
-if ((!rkey &amp;&amp; !lkey &amp;&amp; !ralt &amp;&amp; !lalt) || (rkey &amp;&amp; lkey) || (lalt &amp;&amp; ralt) || (rkey &amp;&amp; lalt) || (ralt &amp;&amp; lkey)){
+if (((rkey &amp;&amp; lkey) or (ralt &amp;&amp; lalt)) or ((ralt &amp;&amp; lkey) or (rkey &amp;&amp; lalt))) {
+    if (hspd != 0) {
+        if (((hspd &gt; 0 &amp;&amp; (hspd-frict) &lt;= 0) || (hspd &lt; 0 &amp;&amp; (hspd+frict) &gt;= 0 ))) {
+            hspd = 0;
+        } else {
+            if hspd &lt; 0 {
+                hspd += frict;
+            }
+            if hspd &gt; 0{
+                hspd -= frict;
+            }
+        }
+    }
+}
+if ((!rkey &amp;&amp; !lkey &amp;&amp; !ralt &amp;&amp; !lalt)){
     if (hspd != 0) {
         if (hspd &lt; 0) {
             hspd += frict;
-        } else {
+        } else if (hspd &gt; 0) {
             hspd -= frict;
-        }
+        } 
     }
 }
 
