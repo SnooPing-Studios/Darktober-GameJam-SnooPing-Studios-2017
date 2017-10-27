@@ -97,7 +97,7 @@ y += vspd;
 
 //Enemy Collision
 if (place_meeting(x,y,obj_player)){
-    game_restart();
+    room_restart();
 }
 </string>
           </argument>
