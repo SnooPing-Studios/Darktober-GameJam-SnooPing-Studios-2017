@@ -28,12 +28,42 @@
             <string>/// Globals
 
 // Default Key Controls
-global.jumpCtrl = vk_space;
-global.upCtrl = (ord("W"));
-global.leftCtrl = (ord("A"));
-global.rightCtrl = (ord("D"));
-global.downCtrl = (ord("S"));
-global.ctrlScheme = "WASD";
+if(gamepad_is_connected(0) == true){  
+    if (show_question("A controller is connected. Would you like to use it?") == true) {
+        global.upCtrl = gp_axislv;
+        global.upAlt = gp_padu;
+        global.leftCtrl = gp_axislh;
+        global.leftAlt = gp_padl;
+        global.rightCtrl = gp_axislh;
+        global.rightAlt = gp_padr;
+        global.downCtrl = gp_axislv;
+        global.downAlt = gp_padd;
+        global.jumpCtrl = gp_face1;
+        global.ctrlScheme = "Gamepad";
+    }else{
+    global.jumpCtrl = vk_space;
+    global.upCtrl = (ord("W"));
+    global.upAlt = vk_up;
+    global.leftCtrl = (ord("A"));
+    global.leftAlt = vk_left;
+    global.rightCtrl = (ord("D"));
+    global.rightAlt = vk_right;
+    global.downCtrl = (ord("S"));
+    global.downAlt = vk_down;
+    global.ctrlScheme = "WASD";
+    }
+}else{
+    global.jumpCtrl = vk_space;
+    global.upCtrl = (ord("W"));
+    global.upAlt = vk_up;
+    global.leftCtrl = (ord("A"));
+    global.leftAlt = vk_left;
+    global.rightCtrl = (ord("D"));
+    global.rightAlt = vk_right;
+    global.downCtrl = (ord("S"));
+    global.downAlt = vk_down;
+    global.ctrlScheme = "WASD";
+}
 
 gamepad_set_axis_deadzone(0, 0.7);
 
@@ -42,52 +72,6 @@ enum enemy_state {
     idle,
     chase
 }
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="9" enumb="13">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>if global.ctrlScheme == "Gamepad" {
-    global.upCtrl = (ord("W"));
-    global.leftCtrl = (ord("A"));
-    global.rightCtrl = (ord("D"));
-    global.downCtrl = (ord("S"));
-    global.jumpCtrl = vk_space;
-    global.ctrlScheme = "WASD";
-} else if global.ctrlScheme == "WASD" {
-    global.upCtrl = vk_up;
-    global.leftCtrl = vk_left;
-    global.rightCtrl = vk_right;
-    global.downCtrl = vk_down;
-    global.jumpCtrl = vk_space;
-    global.ctrlScheme = "Arrow keys";
-} else if global.ctrlScheme == "Arrow keys" {
-    global.upCtrl = gp_axislv;
-    global.leftCtrl = gp_axislh;
-    global.rightCtrl = gp_axislh;
-    global.downCtrl = gp_axislv;
-    global.jumpCtrl = gp_face1;
-    global.ctrlScheme = "Gamepad";
-}
-
-
 </string>
           </argument>
         </arguments>

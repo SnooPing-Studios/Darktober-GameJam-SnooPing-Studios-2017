@@ -60,11 +60,15 @@ fric = 1;
             <string>/// Player movement
 if global.ctrlScheme != "Gamepad" {
     var rkey = (keyboard_check(global.rightCtrl));
+    var ralt = (keyboard_check(global.rightAlt));
     var lkey = (keyboard_check(global.leftCtrl));
+    var lalt = (keyboard_check(global.leftAlt));
     var jkey = (keyboard_check(global.jumpCtrl));
 } else {
     var rkey = ((gamepad_axis_value(0, global.rightCtrl)) &gt; 0);
+    var ralt = (gamepad_button_check(0, global.rightAlt));
     var lkey = ((gamepad_axis_value(0, global.leftCtrl)) &lt; 0);
+    var lalt = (gamepad_button_check(0, global.leftAlt));
     var jkey = (gamepad_button_check(0, global.jumpCtrl));
 }
 
@@ -94,7 +98,7 @@ if (place_meeting(x,y+1,obj_solid)) {
 }
 
 // Moving right
-if (rkey){
+if (rkey or ralt){
     if (hspd &lt; spd) {
         hspd += frict;
     } else {
@@ -103,7 +107,7 @@ if (rkey){
 }
 
 // Moving left
-if (lkey) {
+if (lkey || lalt) {
     if (hspd &gt; spd) {
         hspd -= frict;
     } else {
@@ -112,7 +116,7 @@ if (lkey) {
 }
 
 // Check if the player is not moving
-if ((!rkey &amp;&amp; !lkey || rkey &amp;&amp; lkey)) {
+if ((!rkey &amp;&amp; !lkey &amp;&amp; !ralt &amp;&amp; !lalt) || (rkey &amp;&amp; lkey) || (lalt &amp;&amp; ralt) || (rkey &amp;&amp; lalt) || (ralt &amp;&amp; lkey)){
     if (hspd != 0) {
         if (hspd &lt; 0) {
             hspd += frict;
