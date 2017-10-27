@@ -59,7 +59,7 @@ fric = 1;
 
 var rkey = (keyboard_check(global.rightCtrl));
 var lkey = (keyboard_check(global.leftCtrl));
-var jkey = (keyboard_check(global.upCtrl));
+var jkey = (keyboard_check(global.jumpCtrl));
 var frict = fric;
 
 // Check for ground under player

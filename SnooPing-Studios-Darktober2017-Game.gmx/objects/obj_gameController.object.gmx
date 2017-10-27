@@ -25,11 +25,11 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>global.upCtrl = vk_up;
-global.leftCtrl = vk_left;
-global.rightCtrl = vk_right;
-global.downCtrl = vk_down;
-global.ctrlScheme = "Arrow keys"
+            <string>global.upCtrl = vk_space;
+global.leftCtrl = (ord("A"));
+global.rightCtrl = (ord("D"));
+global.downCtrl = (ord("S"));
+global.ctrlScheme = "WASD";
 </string>
           </argument>
         </arguments>
@@ -57,15 +57,9 @@ global.ctrlScheme = "Arrow keys"
     global.leftCtrl = (ord("A"));
     global.rightCtrl = (ord("D"));
     global.downCtrl = (ord("S"));
-    global.ctrlScheme = "Spacebar ASD";
-} else if global.ctrlScheme == "Spacebar ASD" {
-    global.upCtrl = (ord("W"));
-    global.leftCtrl = (ord("A"));
-    global.rightCtrl = (ord("D"));
-    global.downCtrl = (ord("S"));
     global.ctrlScheme = "WASD";
 } else if global.ctrlScheme == "WASD" {
-    global.upCtrl = vk_up;
+    global.upCtrl = vk_space;
     global.leftCtrl = vk_left;
     global.rightCtrl = vk_right;
     global.downCtrl = vk_down;
