@@ -33,6 +33,9 @@ jspd = 8;
 hspd = 0;
 vspd = 0;
 fric = 1;
+weapon = 0;
+canattack = 1;
+canswitch = 1;
 
 
 </string>
@@ -64,15 +67,27 @@ if global.ctrlScheme != "Gamepad" {
     var lkey = (keyboard_check(global.leftCtrl));
     var lalt = (keyboard_check(global.leftAlt));
     var jkey = (keyboard_check(global.jumpCtrl));
+    var akey = (keyboard_check(global.attackCtrl));
+    var skey = (keyboard_check(global.switchCtrl));
 } else {
     var rkey = ((gamepad_axis_value(0, global.rightCtrl)) &gt; 0);
     var ralt = (gamepad_button_check(0, global.rightAlt));
     var lkey = ((gamepad_axis_value(0, global.leftCtrl)) &lt; 0);
     var lalt = (gamepad_button_check(0, global.leftAlt));
     var jkey = (gamepad_button_check(0, global.jumpCtrl));
+    var akey = (gamepad_button_check(0, global.attackCtrl));
+    var skey = (gamepad_button_check(0, global.switchCtrl));
 }
 
 var frict = fric;
+
+// Change image rotation
+if (rkey || ralt) {
+    image_xscale = 1;
+}
+if (lkey || lalt) {
+    image_xscale = -1;
+}
 
 // Check for ground under player
 if (place_meeting(x,y+1,obj_solid)) {
@@ -165,8 +180,42 @@ if (place_meeting(x,y+vspd,obj_solid)) {
 // Move vertically
 y += vspd;
 
+// Switch weapons
+
+if (!skey) {
+    canswitch = 1;
+}
+if (skey &amp;&amp; canswitch == 1) {
+    if (weapon == 0) {
+        weapon = 1;
+        canswitch = 0;
+    } else if (weapon == 1) {
+        weapon = 0;
+        canswitch = 0;
+    }
+}
+
+// Attack
+
+if (akey &amp;&amp; canattack == 1) {
+    if (weapon == 0) {
+        if (image_xscale = 1) {
+            instance_create(x+16, y-16, obj_bullet);
+        } 
+        if (image_xscale = -1) {
+            instance_create(x-32, y-16, obj_bullet);
+        }
+    }
+    if (weapon == 1) {
+
+    }
+    canattack = 0;
+} else if (!akey &amp;&amp; canattack == 0) {
+    canattack = 1;
+}
+
 y = round(y);
-x = round(x)
+x = round(x);
 </string>
           </argument>
         </arguments>

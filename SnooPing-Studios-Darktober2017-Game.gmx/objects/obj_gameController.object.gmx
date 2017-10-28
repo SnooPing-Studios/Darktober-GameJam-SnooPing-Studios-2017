@@ -39,9 +39,13 @@ if(gamepad_is_connected(0) == true){
         global.downCtrl = gp_axislv;
         global.downAlt = gp_padd;
         global.jumpCtrl = gp_face1;
+        global.attackCtrl = gp_face3;
+        global.switchCtrl = gp_shoulderl;
         global.ctrlScheme = "Gamepad";
     }else{
     global.jumpCtrl = vk_space;
+    global.attackCtrl = (ord("Z"));
+    global.switchCtrl = (ord("E"));
     global.upCtrl = (ord("W"));
     global.upAlt = vk_up;
     global.leftCtrl = (ord("A"));
@@ -54,6 +58,8 @@ if(gamepad_is_connected(0) == true){
     }
 }else{
     global.jumpCtrl = vk_space;
+    global.attackCtrl = (ord("Z"));
+    global.switchCtrl = (ord("E"));
     global.upCtrl = (ord("W"));
     global.upAlt = vk_up;
     global.leftCtrl = (ord("A"));
@@ -67,10 +73,45 @@ if(gamepad_is_connected(0) == true){
 
 gamepad_set_axis_deadzone(0, 0.7);
 
+// Weapons
+global.bullet_type = 0;
+global.sword_type = 0;
+
 // Enemy States
 enum enemy_state {
     idle,
     chase
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="9" enumb="16">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>if (global.bullet_type == 0) {
+    global.bullet_type = 1;
+}
+else if (global.bullet_type == 1) {
+    global.bullet_type = 2;
+}
+else if (global.bullet_type == 2) {
+    global.bullet_type = 0;
 }
 </string>
           </argument>
