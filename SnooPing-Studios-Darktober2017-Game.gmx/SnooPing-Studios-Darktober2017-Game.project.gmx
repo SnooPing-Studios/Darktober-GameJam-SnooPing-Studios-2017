@@ -8,7 +8,10 @@
   <sprites name="sprites">
     <sprite>sprites\spr_player</sprite>
     <sprite>sprites\spr_solid</sprite>
-    <sprite>sprites\spr_enemy</sprite>
+    <sprites name="enemies">
+      <sprite>sprites\spr_ghostEnemy_flyer</sprite>
+      <sprite>sprites\spr_enemy</sprite>
+    </sprites>
   </sprites>
   <backgrounds name="background"/>
   <paths name="paths"/>
@@ -16,10 +19,16 @@
     <object>objects\obj_gamecontroller</object>
     <object>objects\obj_solid</object>
     <object>objects\obj_player</object>
-    <object>objects\obj_enemy</object>
     <object>objects\obj_pit</object>
     <objects name="Parents">
       <object>objects\obj_instantdeath</object>
+    </objects>
+    <objects name="enemies">
+      <object>objects\obj_ghostEnemy_base</object>
+      <object>objects\obj_ghostEnemy_flyer</object>
+      <object>objects\obj_enemy_base</object>
+      <object>objects\obj_enemy</object>
+      <object>objects\obj_enemy_slider</object>
     </objects>
   </objects>
   <rooms name="rooms">
