@@ -25,11 +25,12 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/// Initialize Variables
-
-state = enemy_state.idle;
-vspd = 0;
+            <string>sDist = 320;
+sCool = 0;
+sActive = false;
+sDir = 0;
 hspd = 0;
+vspd = 0;
 </string>
           </argument>
         </arguments>
@@ -52,26 +53,68 @@ hspd = 0;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/// Movement
-switch (state)
-{
-    case enemy_state.idle:
-    {
+            <string>if sCool &lt;= 0 {
+    if (point_distance(x+16,y+16,obj_player.x+16,obj_player.y+16)) &lt; 320 {
+        pDir = (point_direction(x+16,y+16,obj_player.x+16,obj_player.y+16));
+        if (pDir &gt;= -10 &amp;&amp; pDir &lt;= 10) {
+            sCool = 9000;
+            sActive = true;
+            sDir = 0;
+            cDist = 0;
+        } else if (pDir &gt;= 80 &amp;&amp; pDir &lt;= 100) {
+            sCool = 9000;
+            sActive = true;
+            sDir = 1;
+            cDist = 0;
+        } else if (pDir &gt;= 170 &amp;&amp; pDir &lt;= 190) {
+            sCool = 9000;
+            sActive = true;
+            sDir = 2;
+            cDist = 0;
+        } else if (pDir &gt;= 260 &amp;&amp; pDir &lt;= 280) {
+            sCool = 9000;
+            sActive = true;
+            sDir = 3;
+            cDist = 0;
+        }
+    } 
+} else {
+    sCool -= 1;
+}
+
+if sActive {
+    if cDist &lt; sDist {
+        
+        if sDir == 0 {
+            cDist+=6;
+            hspd = 6;
+        }
+                
+        if sDir == 1 {
+            cDist+=6;
+            vspd = -6;
+        }
+                
+        if sDir == 2 {
+            cDist+=6;
+            hspd = -6;
+        }
+                
+        if sDir == 3 {
+            cDist+=6;
+            vspd = 6;
+        }
+        
+    } else {
+        sActive = false;
+        sDir = 0;
+        sCool = 180;
         hspd = 0;
-        vspd = (min(7,vspd+0.25));
-        if (distance_to_object(obj_player) &lt; 192) 
-            state = enemy_state.chase;
-    }
-    break;
-    case enemy_state.chase:
-    {
-        dir = sign(obj_player.x - x);
-        hspd = dir * 2;
-        vspd = (min(7,vspd+0.25));
-        if (distance_to_object(obj_player) &gt; 288)
-           state = enemy_state.idle;
+        vspd = 0;
     }
 }
+
+
 
 // Horizontal collisions
 if (place_meeting(x+hspd,y,obj_solid)) {
@@ -99,29 +142,6 @@ y += vspd;
 if (place_meeting(x,y,obj_player)){
     room_restart();
 }
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="4" ename="obj_bullet">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>instance_destroy();
 </string>
           </argument>
         </arguments>
